@@ -5,10 +5,7 @@
 */
 
 function getStringLength (string, number) {
-  if (string.length <= number) {
-    return true;
-  }
-  return false;
+  return string.length <= number;
 }
 getStringLength('проверяемая строка', 20);
 
@@ -33,23 +30,12 @@ isPalidrome('топот');
 имя_функции('а я томат');           // Результат: NaN
 */
 
-function getNumbers (string) {
-  let newNumber = '';
-  if(string === Number(string)) {
-    return Math.abs(string);
-  } else {
-    for(let i = 0; i < string.length; i++){
-      if(string[i] == Number(string[i]) && string[i] !== ' ') {
-        newNumber += string[i];
-      }
-    }
-    if(newNumber === ''){
-      return NaN;
-    }
-    return Number(newNumber);
-  }
+function justNumbers(string) {
+  const numsStr = string.replace(/[^0-9]/g, '');
+  return parseInt(numsStr, 10);
 }
-getNumbers('1 кефир, 0.5 батона');
+justNumbers('1 кефир, 0.5 батона');
+
 
 /*
 Функция, которая принимает три параметра:
