@@ -4,7 +4,7 @@
 имя_функции('проверяемая строка', 10); // Результат: false — строка не проходит
 */
 
-function getStringLength (string, number) {
+function getStringLength(string, number) {
   return string.length <= number;
 }
 getStringLength('проверяемая строка', 20);
@@ -19,14 +19,14 @@ getStringLength('проверяемая строка', 20);
 function isPalindrome(string) {
   let temp = ''; //строка, копия входной строки, но без пробелов
   for (let i = 0; i < string.length; i++) {
-    if (string[i] !== ' '){
+    if (string[i] !== ' ') {
       temp += string[i].toLowerCase(); //если не пробел, то копируем в temp. Заодно преобразуем с строчную
     }
     let temp2 = ''; //перевернутая строка
     for (let j = 0; j < temp.length; j++) {
       temp2 += temp[temp.length - 1 - i];
     }
-    if (temp2 === temp){
+    if (temp2 === temp) {
       return true;
     }
     return false;
@@ -59,3 +59,12 @@ justNumbers('1 кефир, 0.5 батона');
 Если исходная строка превышает заданную длину, она не должна обрезаться.
 Если «добивка» слишком длинная, она обрезается с конца.
 */
+
+const myPadStart = (string, minLength, pad) => {
+  const actualPad = minLength - string.length;
+  if (actualPad <= 0) {
+    return string;
+  }
+  return pad.slice(0, actualPad % pad.length) + pad.repeat(actualPad / pad.length) + string;
+};
+myPadStart('q', 4, 'we');
