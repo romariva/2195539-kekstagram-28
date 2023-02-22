@@ -16,23 +16,11 @@ getStringLength('проверяемая строка', 20);
 имя_функции('Лёша на полке клопа нашёл '); // Результат: true - это палиндром
 */
 
-function isPalindrome(string) {
-  let temp = ''; //строка, копия входной строки, но без пробелов
-  for (let i = 0; i < string.length; i++) {
-    if (string[i] !== ' ') {
-      temp += string[i].toLowerCase(); //если не пробел, то копируем в temp. Заодно преобразуем с строчную
-    }
-    let temp2 = ''; //перевернутая строка
-    for (let j = 0; j < temp.length; j++) {
-      temp2 += temp[temp.length - 1 - i];
-    }
-    if (temp2 === temp) {
-      return true;
-    }
-    return false;
-  }
+function isPalidrome(string) {
+  string = string.toLowerCase().replace(/\s/g,''); //нижний регистр, глобальный поиск пробелов и замена на пустоту.
+  return string === string.split('').reverse().join(''); //массив, реверс массива, разделитель пустая строка.
 }
-isPalindrome('Лёша на полке клопа нашёл ');
+isPalidrome('топот');
 
 /*Функция, которая принимает строку, извлекает содержащиеся в ней цифры от 0 до 9
 и возвращает их в виде целого положительного числа.
