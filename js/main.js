@@ -21,6 +21,7 @@ const COMMENTS = [
   'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
 ];
+
 const getRandomInteger = (a, b) => {
   const lower = Math.ceil(Math.min(a, b));
   const upper = Math.floor(Math.max(a, b));
@@ -28,8 +29,8 @@ const getRandomInteger = (a, b) => {
   return Math.floor(result);
 };
 
-let url = 'photos/'+ getRandomInteger(1, 25) + '.jpg';
-let likes = getRandomInteger(15, 200);
+const url = `photos/${getRandomInteger(1, 25)}.jpg`;
+const likes = getRandomInteger(15, 200);
 const description = 'строка — описание фотографии.';
 
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
@@ -37,10 +38,8 @@ const getRandomArrayElement = (elements) => elements[getRandomInteger(0, element
 const createPhotoDesc = () => ({
   id: getRandomInteger(1, 25),
   message: getRandomArrayElement(COMMENTS),
-  avatar: 'img/avatar-' + getRandomInteger(1, 6) +'.svg',
+  avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
   name: getRandomArrayElement(NAMES),
 });
 
 const userEvent = Array.from({length: 25}, createPhotoDesc);
-
-console.log(userEvent);
