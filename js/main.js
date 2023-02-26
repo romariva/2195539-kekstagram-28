@@ -29,10 +29,6 @@ const getRandomInteger = (a, b) => {
   return Math.floor(result);
 };
 
-const url = `photos/${getRandomInteger(1, 25)}.jpg`;
-const likes = getRandomInteger(15, 200);
-const description = 'строка — описание фотографии.';
-
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
 const createPhotoDesc = () => ({
@@ -40,6 +36,9 @@ const createPhotoDesc = () => ({
   message: getRandomArrayElement(COMMENTS),
   avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
   name: getRandomArrayElement(NAMES),
+  url:`photos/${getRandomInteger(1, 25)}.jpg`,
+  likes: getRandomInteger(15, 200),
+  description: 'строка — описание фотографии.',
 });
 
 const userEvent = Array.from({length: 25}, createPhotoDesc);
