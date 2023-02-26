@@ -41,4 +41,9 @@ const createPhotoDesc = () => ({
   description: 'строка — описание фотографии.',
 });
 
-const userEvent = Array.from({length: 25}, createPhotoDesc);
+function createTotal () {
+  // eslint-disable-next-line no-return-assign, no-undef
+  return userEvent = Array.from({length: 25}, createPhotoDesc);
+}
+
+createTotal();
