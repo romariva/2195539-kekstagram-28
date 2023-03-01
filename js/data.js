@@ -23,12 +23,12 @@ const COMMENTS = [
 const FEEDBACKS_COUNT = 25;
 
 const createPhotoDesc = () => ({
-  id: `${getRandomArrayElement(1, 25)}`,
+  id: getRandomArrayElement(1, 25),
   message: getRandomArrayElement(COMMENTS),
   avatar: `img/avatar-${getRandomArrayElement(1, 6)}.svg`,
   name: getRandomArrayElement(NAMES),
   url:`photos/${getRandomArrayElement(1, 25)}.jpg`,
-  likes: `${getRandomArrayElement(15, 200)}`,
+  likes: getRandomArrayElement(15, 200),
   description: 'строка — описание фотографии.',
 });
 
