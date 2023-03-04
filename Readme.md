@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Roman Golubev](https://up.htmlacademy.ru/javascript/28/user/2195539).
-* Наставник: [Егор Глебов](https://htmlacademy.ru/profile/beast).
+* Наставник: [Дмитрий Беллавин](https://htmlacademy.ru/profile/bellavin).
 
 ---
 
