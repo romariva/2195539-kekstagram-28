@@ -1,4 +1,4 @@
-import {getRandomArrayElement} from './util.js';
+import {getRandomArrayElement, getRandomInteger} from './util.js';
 
 const NAMES = [
   'Иван',
@@ -23,12 +23,12 @@ const COMMENTS = [
 const FEEDBACKS_COUNT = 25;
 
 const createPhotoDesc = () => ({
-  id: getRandomArrayElement(1, 25),
+  id: getRandomInteger(1, 25),
   message: getRandomArrayElement(COMMENTS),
-  avatar: `img/avatar-${getRandomArrayElement(1, 6)}.svg`,
+  avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
   name: getRandomArrayElement(NAMES),
-  url:`photos/${getRandomArrayElement(1, 25)}.jpg`,
-  likes: getRandomArrayElement(15, 200),
+  url:`photos/${getRandomInteger(1, 25)}.jpg`,
+  likes: getRandomInteger(15, 200),
   description: 'строка — описание фотографии.',
 });
 
