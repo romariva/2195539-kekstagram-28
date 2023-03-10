@@ -24,7 +24,7 @@ const FEEDBACKS_COUNT = 25;
 
 const createPhotoDesc = () => ({
   id: getRandomInteger(1, 25),
-  message: getRandomArrayElement(COMMENTS),
+  comments: getRandomArrayElement(COMMENTS),
   avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
   name: getRandomArrayElement(NAMES),
   url:`photos/${getRandomInteger(1, 25)}.jpg`,
