@@ -1,16 +1,17 @@
 import {isEscapeKey} from './util.js';
 
+
 const bigPictureSection = document.querySelector('.big-picture');
 const closeButton = document.querySelector('.big-picture__cancel');
 const modalOpen = document.querySelector('body');
 const pictureContainer = document.querySelector('.pictures');
+const commentCounter = document.querySelector('.social__comment-count');
+const commentLoader = document.querySelector('.comments-loader');
 
 const pictureUrl = document.querySelector('.big-picture__img');
 const pictureLike = document.querySelector('.likes-count');
 const pictureComments = document.querySelector('.comments-count');
 const pictureDesc = document.querySelector('.social__caption');
-const commentCounter = document.querySelector('.social__comment-count');
-const commentLoader = document.querySelector('.comments-loader');
 
 //открыть при клике
 pictureContainer.addEventListener('click', () => {
@@ -18,8 +19,6 @@ pictureContainer.addEventListener('click', () => {
   commentCounter.classList.add('hidden');
   commentLoader.classList.add('hidden');
   modalOpen.classList.add('.modal-open');
-
-
 });
 
 //закрыть при ESC
