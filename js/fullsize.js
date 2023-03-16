@@ -1,17 +1,19 @@
 import {isEscapeKey} from './util.js';
+import './picture.js';
 
-
-const bigPictureSection = document.querySelector('.overlay');
-const closeButton = document.querySelector('.big-picture__cancel');
 const body = document.querySelector('body');
+const bigPictureSection = document.querySelector('.big-picture');
+const bigPicturePreview = document.querySelector('.big-picture__preview');
+
+const closeSection = document.querySelector('.overlay');
+const closeButton = document.querySelector('.big-picture__cancel');
 const pictureContainer = document.querySelector('.pictures');
 const commentCounter = document.querySelector('.social__comment-count');
 const commentLoader = document.querySelector('.comments-loader');
 
-const pictureUrl = document.querySelector('.big-picture__img');
-const pictureLike = document.querySelector('.likes-count');
-const pictureComments = document.querySelector('.comments-count');
-const pictureDesc = document.querySelector('.social__caption');
+// const pictureLike = document.querySelector('.likes-count');
+// const pictureComments = document.querySelector('.comments-count');
+// const pictureDesc = document.querySelector('.social__caption');
 
 //открыть при клике
 pictureContainer.addEventListener('click', (evt) => {
@@ -22,6 +24,10 @@ pictureContainer.addEventListener('click', (evt) => {
     bigPictureSection.classList.remove('hidden');
     commentCounter.classList.add('hidden');
     commentLoader.classList.add('hidden');
+
+    bigPicturePreview.querySelector('.big-picture__img img').src = evt.target.src;
+    bigPicturePreview.querySelector('.likes-count span').textContent = evt.target.textContent;
+
   }
   body.classList.add('.modal-open');
   console.log(currentLink.dataset.pictureId);
@@ -40,5 +46,5 @@ document.addEventListener('keydown', (evt) => {
 
 //закрыть кнопкой Крестик
 closeButton.addEventListener('click', () => {
-  bigPictureSection.classList.add('hidden');
+  closeSection.classList.add('hidden');
 });
