@@ -11,7 +11,7 @@ const isEscapeKey = (evt) => evt.key === 'Escape';// функция нажати
 
 //функция уникального ID
 const getUniqueId = () => ({
-  id: getRandomInteger(0, 100)
+  id: getRandomInteger(0, 100) + new Date() .getTime(),
 });
 
 export {getRandomArrayElement, getRandomInteger, isEscapeKey, getUniqueId};
