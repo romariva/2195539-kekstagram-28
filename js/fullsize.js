@@ -27,8 +27,8 @@ const renderFullsize = (data) => {
       pictureImg.alt = currentItem.description;
       pictureLikeCount.textContent = currentItem.likes;
       pictureCommentsCount.textContent = currentItem.comments.length;
-      pictureDesc.toString = currentItem.description;
       pictureComments.textContent = currentItem.comments;
+      pictureDesc.textContent = currentItem.description;
 
 
       bigPictureSection.classList.remove('hidden');
@@ -47,7 +47,7 @@ const renderFullsize = (data) => {
       commentCounter.classList.remove('hidden');
       commentLoader.classList.remove('hidden');
       body.classList.remove('.modal-open');
-
+      //отписаться от события
       document.removeEventListener('keydown', onDocumentKeydown);
     }
   });
