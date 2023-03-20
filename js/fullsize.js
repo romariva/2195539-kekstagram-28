@@ -4,7 +4,6 @@ const renderFullsize = (data) => {
 
   const body = document.querySelector('body');
   const bigPictureSection = document.querySelector('.big-picture');
-  const bigPicturePreview = document.querySelector('.big-picture__preview');
 
   const closeSection = document.querySelector('.overlay');
   const closeButton = document.querySelector('.big-picture__cancel');
@@ -12,40 +11,52 @@ const renderFullsize = (data) => {
   const commentCounter = document.querySelector('.social__comment-count');
   const commentLoader = document.querySelector('.comments-loader');
 
-  // const pictureLike = document.querySelector('.likes-count');
-  // const pictureComments = document.querySelector('.comments-count');
-  // const pictureDesc = document.querySelector('.social__caption');
+  const pictureLikeCount = document.querySelector('.likes-count');
+  const pictureCommentsCount = document.querySelector('.comments-count');
+  const pictureComments = document.querySelector('.social__comments');
+  const pictureDesc = document.querySelector('.social__caption');
+  const pictureImg = document.querySelector('.big-picture__img img');
 
-  //открыть при клике
   pictureContainer.addEventListener('click', (evt) => {
     evt.preventDefault();
     const currentLink = evt.target.closest('[data-picture-id]');
 
     if (currentLink){
+      const currentItem = data.find((item) => item.id === currentLink.dataset.pictureId);
+      pictureImg.src = currentItem.url;
+      pictureImg.alt = currentItem.description;
+      pictureLikeCount.textContent = currentItem.likes;
+      pictureCommentsCount.textContent = currentItem.comments.length;
+      pictureDesc.toString = currentItem.description;
+
+
       bigPictureSection.classList.remove('hidden');
       commentCounter.classList.add('hidden');
       commentLoader.classList.add('hidden');
-
-      bigPicturePreview.querySelector('.big-picture__img img').src = evt.target.src;
-
     }
+
     body.classList.add('.modal-open');
-    console.log(currentLink.dataset.pictureId);
   });
 
   //закрыть при ESC
-  document.addEventListener('keydown', (evt) => {
+  const onDocumentKeydown = document.addEventListener('keydown', (evt) => {
     if (isEscapeKey(evt)) {
       evt.preventDefault();
       bigPictureSection.classList.add('hidden');
       commentCounter.classList.remove('hidden');
       commentLoader.classList.remove('hidden');
       body.classList.remove('.modal-open');
+
+      document.removeEventListener('keydown', onDocumentKeydown);
     }
   });
 
   //закрыть кнопкой Крестик
   closeButton.addEventListener('click', () => {
+    bigPictureSection.classList.add('hidden');
+  });
+  //закрытие на overlay
+  closeSection.addEventListener('click', () => {
     closeSection.classList.add('hidden');
   });
 

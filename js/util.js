@@ -7,11 +7,10 @@ const getRandomInteger = (a, b) => {
 
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
-const isEscapeKey = (evt) => evt.key === 'Escape';// функция нажатия Esc
-
 //функция уникального ID
-const getUniqueId = () => ({
-  id: getRandomInteger(0, 100) + new Date() .getTime(),
-});
+const getUniqueId = () => getRandomInteger(0, 100).toString() + new Date().getTime().toString();
+
+// функция нажатия Esc
+const isEscapeKey = (evt) => evt.key === 'Escape';
 
 export {getRandomArrayElement, getRandomInteger, isEscapeKey, getUniqueId};

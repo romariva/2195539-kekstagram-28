@@ -20,16 +20,25 @@ const COMMENTS = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
 ];
 
+const DESCRIPTIONS = [
+  'Мне понравилось в является поэтому сайте удобность.',
+  'Профессиональность заметна не вооружённых взглядом!',
+  'Стоит задача раскрутить страницу. Пока все выполняется в соответствии с поставленной задачей.',
+  'Классный сервис,услуг много и социальных сетей с которыми он работает вообщем СУПЕР.',
+  'Достойный сервис по продвижению социальных сетей ',
+  'Прекрасный и удобный сервис. Разработчики большие молодцы. ',
+];
+
 const FEEDBACKS_COUNT = 25;
 
 const createPhotoDesc = () => ({
-  id: getUniqueId,
+  id: getUniqueId(),
   comments: COMMENTS,
   avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
   name: getRandomArrayElement(NAMES),
   url:`photos/${getRandomInteger(1, 25)}.jpg`,
   likes: getRandomInteger(15, 200),
-  description: 'строка — описание фотографии.',
+  description: getRandomArrayElement(DESCRIPTIONS),
 });
 
 const userEvent = () => Array.from({ length: FEEDBACKS_COUNT }, createPhotoDesc);
