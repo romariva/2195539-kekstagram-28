@@ -28,6 +28,7 @@ const renderFullsize = (data) => {
       pictureLikeCount.textContent = currentItem.likes;
       pictureCommentsCount.textContent = currentItem.comments.length;
       pictureDesc.toString = currentItem.description;
+      pictureComments.textContent = currentItem.comments;
 
 
       bigPictureSection.classList.remove('hidden');
