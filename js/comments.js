@@ -1,16 +1,14 @@
-import { COMMENTS } from './data';
-
-const renderComments = (commentString) => {
-const commentString = COMMENTS;
-
+const renderComments = (data) => {
   const commentList = document.createElement('ul');
 
-  commentString.forEach((comments) => {
+  data.forEach(({avatar, name, message}) => {
     const commentItem = document.createElement('li');
-    commentItem.textContent = comments;
+    commentItem.querySelector('.social__picture').src = avatar;
+    commentItem.querySelector('.social__picture').alt = name;
+    commentItem.querySelector('.social__text').textContent = message;
+
     commentList.append(commentItem);
   });
-
 };
 
 export {renderComments};

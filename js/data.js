@@ -43,4 +43,4 @@ const createPhotoDesc = () => ({
 
 const userEvent = () => Array.from({ length: FEEDBACKS_COUNT }, createPhotoDesc);
 
-export {userEvent, COMMENTS};
+export {userEvent};
