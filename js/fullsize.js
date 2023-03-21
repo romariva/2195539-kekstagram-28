@@ -31,6 +31,7 @@ const renderFullsize = (data) => {
       pictureComments.str = renderComments(currentItem.comments);
       pictureDesc.textContent = currentItem.description;
 
+
       bigPictureSection.classList.remove('hidden');
       commentCounter.classList.add('hidden');
       commentLoader.classList.add('hidden');

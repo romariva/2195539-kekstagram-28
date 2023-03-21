@@ -9,6 +9,7 @@ const renderComments = (data) => {
 
     commentList.append(commentItem);
   });
+  pictureComments.append(commentList);
 };
 
 export {renderComments};
