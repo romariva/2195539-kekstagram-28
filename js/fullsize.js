@@ -1,4 +1,5 @@
 import {isEscapeKey} from './util.js';
+import {renderComments} from './comments.js';
 
 const renderFullsize = (data) => {
 
@@ -27,9 +28,8 @@ const renderFullsize = (data) => {
       pictureImg.alt = currentItem.description;
       pictureLikeCount.textContent = currentItem.likes;
       pictureCommentsCount.textContent = currentItem.comments.length;
-      pictureComments.textContent = currentItem.comments;
+      pictureComments.str = renderComments(currentItem.comments);
       pictureDesc.textContent = currentItem.description;
-
 
       bigPictureSection.classList.remove('hidden');
       commentCounter.classList.add('hidden');
