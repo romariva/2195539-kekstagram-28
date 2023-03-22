@@ -1,15 +1,8 @@
 import {getRandomArrayElement, getRandomInteger, getUniqueId} from './util.js';
 
-const NAMES = [
-  'Иван',
-  'Хуан Себастьян',
-  'Мария',
-  'Кристоф',
-  'Виктор',
-  'Юлия',
-  'Люпита',
-  'Вашингтон',
-];
+const COMMENT_COUNT = 30;
+
+const NAMES = ['Иван','Хуан Себастьян','Мария','Кристоф','Виктор','Юлия','Люпита','Вашингтон',];
 
 const COMMENTS = [
   'Всё отлично!',
@@ -31,14 +24,20 @@ const DESCRIPTIONS = [
 
 const FEEDBACKS_COUNT = 25;
 
+const createComments = () => ({
+  avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
+  message: getRandomArrayElement(COMMENTS),
+  name: getRandomArrayElement(NAMES),
+});
+
 const createPhotoDesc = () => ({
   id: getUniqueId(),
-  comments: COMMENTS,
   avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
   name: getRandomArrayElement(NAMES),
   url:`photos/${getRandomInteger(1, 25)}.jpg`,
   likes: getRandomInteger(15, 200),
   description: getRandomArrayElement(DESCRIPTIONS),
+  comments: Array.from({ length: getRandomInteger(0, COMMENT_COUNT) }, createComments),
 });
 
 const userEvent = () => Array.from({ length: FEEDBACKS_COUNT }, createPhotoDesc);

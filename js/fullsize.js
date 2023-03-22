@@ -6,7 +6,7 @@ const renderFullsize = (data) => {
   const body = document.querySelector('body');
   const bigPictureSection = document.querySelector('.big-picture');
 
-  const closeSection = document.querySelector('.overlay');
+  // const closeSection = document.querySelector('.overlay');
   const closeButton = document.querySelector('.big-picture__cancel');
   const pictureContainer = document.querySelector('.pictures');
   const commentCounter = document.querySelector('.social__comment-count');
@@ -30,6 +30,7 @@ const renderFullsize = (data) => {
       pictureCommentsCount.textContent = currentItem.comments.length;
       pictureComments.str = renderComments(currentItem.comments);
       pictureDesc.textContent = currentItem.description;
+      // document.querySelector('.social__comments').innerHTML = '';
 
 
       bigPictureSection.classList.remove('hidden');
@@ -58,9 +59,9 @@ const renderFullsize = (data) => {
     bigPictureSection.classList.add('hidden');
   });
   //закрытие на overlay
-  closeSection.addEventListener('click', () => {
-    closeSection.classList.add('hidden');
-  });
+  // closeSection.addEventListener('click', () => {
+  //   closeSection.classList.add('hidden');
+  // });
 
 };
 
