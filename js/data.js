@@ -25,6 +25,7 @@ const DESCRIPTIONS = [
 const FEEDBACKS_COUNT = 25;
 
 const createComments = () => ({
+  id: getUniqueId(),
   avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
   message: getRandomArrayElement(COMMENTS),
   name: getRandomArrayElement(NAMES),

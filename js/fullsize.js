@@ -28,8 +28,8 @@ const renderFullsize = (data) => {
       pictureImg.alt = currentItem.description;
       pictureLikeCount.textContent = currentItem.likes;
       pictureCommentsCount.textContent = currentItem.comments.length;
-      pictureComments.str = renderComments(currentItem.comments);
       pictureDesc.textContent = currentItem.description;
+      pictureComments.str = renderComments(currentItem.comments);
       // document.querySelector('.social__comments').innerHTML = '';
 
 
