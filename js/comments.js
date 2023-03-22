@@ -1,6 +1,8 @@
+import {createElement} from './util.js';
+
 const renderComment = ({avatar, name, message}) => {
-  const comment = document.createElement('li',{className: 'social__comment'});
-  const img = document.createElement(
+  const comment = createElement('li',{className: 'social__comment'});
+  const img = createElement(
     'img',
     {
       className: 'social__picture',
@@ -9,7 +11,7 @@ const renderComment = ({avatar, name, message}) => {
       width: 35,
       height: 35,
     });
-  const text = document.createElement('p',
+  const text = createElement('p',
     {
       className: 'social__text',
       textContent: message,

@@ -13,4 +13,13 @@ const getUniqueId = () => getRandomInteger(0, 100).toString() + new Date().getTi
 // функция нажатия Esc
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
-export {getRandomArrayElement, getRandomInteger, isEscapeKey, getUniqueId};
+const createElement = (tagName, attributes = {}, text) => {
+  const element = document.createElement(tagName);
+  Object.assign(element, attributes);
+  if (text) {
+    element.appendChild(document.createTextNode(text));
+  }
+  return element;
+};
+
+export {getRandomArrayElement, getRandomInteger, isEscapeKey, getUniqueId, createElement};
