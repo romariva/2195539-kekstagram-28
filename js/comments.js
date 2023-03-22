@@ -1,15 +1,29 @@
+const renderComment = ({avatar, name, message}) => {
+  const comment = document.createElement('li',{className: 'social__comment'});
+  const img = document.createElement(
+    'img',
+    {
+      className: 'social__picture',
+      src: avatar,
+      alt: name,
+      width: 35,
+      height: 35,
+    });
+  const text = document.createElement('p',
+    {
+      className: 'social__text',
+      textContent: message,
+    });
+  comment.append(img, text);
+  return comment;
+};
+
 const renderComments = (data) => {
-  const commentList = document.createElement('ul');
-
-  data.forEach(({avatar, name, message}) => {
-    const commentItem = document.createElement('li');
-    commentItem.querySelector('.social__picture').src = avatar;
-    commentItem.querySelector('.social__picture').alt = name;
-    commentItem.querySelector('.social__text').textContent = message;
-
-    commentList.append(commentItem);
+  const comments = document.createElement('ul');
+  return data.forEach((item) => {
+    const comment = renderComment(item);
+    comments.append(comment);
   });
-  pictureComments.append(commentList);
 };
 
 export {renderComments};
