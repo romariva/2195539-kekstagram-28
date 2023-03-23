@@ -2,6 +2,8 @@ import {getRandomArrayElement, getRandomInteger, getUniqueId} from './util.js';
 
 const COMMENT_COUNT = 30;
 
+const FEEDBACKS_COUNT = 25;
+
 const NAMES = ['Иван','Хуан Себастьян','Мария','Кристоф','Виктор','Юлия','Люпита','Вашингтон',];
 
 const COMMENTS = [
@@ -22,8 +24,6 @@ const DESCRIPTIONS = [
   'Прекрасный и удобный сервис. Разработчики большие молодцы. ',
 ];
 
-const FEEDBACKS_COUNT = 25;
-
 const createComments = () => ({
   id: getUniqueId(),
   avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
@@ -43,4 +43,4 @@ const createPhotoDesc = () => ({
 
 const userEvent = () => Array.from({ length: FEEDBACKS_COUNT }, createPhotoDesc);
 
-export {userEvent};
+export {userEvent, createComments};

@@ -5,10 +5,11 @@ const renderFullsize = (data) => {
 
   const body = document.querySelector('body');
   const bigPictureSection = document.querySelector('.big-picture');
-
-  // const closeSection = document.querySelector('.overlay');
-  const closeButton = document.querySelector('.big-picture__cancel');
   const pictureContainer = document.querySelector('.pictures');
+  const closeButton = document.querySelector('.big-picture__cancel');
+  const pictureImg = document.querySelector('.big-picture__img img');
+  // const closeSection = document.querySelector('.overlay');
+
   const commentCounter = document.querySelector('.social__comment-count');
   const commentLoader = document.querySelector('.comments-loader');
 
@@ -16,7 +17,7 @@ const renderFullsize = (data) => {
   const pictureCommentsCount = document.querySelector('.comments-count');
   const pictureComments = document.querySelector('.social__comments');
   const pictureDesc = document.querySelector('.social__caption');
-  const pictureImg = document.querySelector('.big-picture__img img');
+
 
   pictureContainer.addEventListener('click', (evt) => {
     evt.preventDefault();
@@ -24,6 +25,7 @@ const renderFullsize = (data) => {
 
     if (currentLink){
       const currentItem = data.find((item) => item.id === currentLink.dataset.pictureId);
+
       pictureImg.src = currentItem.url;
       pictureImg.alt = currentItem.description;
       pictureLikeCount.textContent = currentItem.likes;
