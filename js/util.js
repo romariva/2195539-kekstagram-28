@@ -15,6 +15,7 @@ const getUniqueId = () => getRandomInteger(0, 100).toString() + new Date().getTi
 // функция нажатия Esc
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
+//функция для генерации элемента DOM
 const createElement = (tagName, attributes = {}, text) => {
   const element = document.createElement(tagName);
   Object.assign(element, attributes);

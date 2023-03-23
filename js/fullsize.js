@@ -22,7 +22,6 @@ const renderFullsize = (data) => {
   pictureContainer.addEventListener('click', (evt) => {
     evt.preventDefault();
     const currentLink = evt.target.closest('[data-picture-id]');
-
     if (currentLink){
       const currentItem = data.find((item) => item.id === currentLink.dataset.pictureId);
 
