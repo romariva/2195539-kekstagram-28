@@ -21,11 +21,12 @@ const renderComment = ({avatar, name, message}) => {
 };
 
 const renderComments = (data) => {
-  const comments = document.createElement('ul');
-  return data.forEach((item) => {
+  const comments = createElement('ul', {className:'social__cemments'});
+  data.forEach((item) => {
     const comment = renderComment(item);
     comments.append(comment);
   });
+  return comments;
 };
 
 export {renderComments};

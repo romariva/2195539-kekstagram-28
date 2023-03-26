@@ -30,7 +30,8 @@ const renderFullsize = (data) => {
       pictureLikeCount.textContent = currentItem.likes;
       pictureCommentsCount.textContent = currentItem.comments.length;
       pictureDesc.textContent = currentItem.description;
-      pictureComments.str = renderComments(currentItem.comments);
+
+      pictureComments.replaceWith(renderComments(currentItem.comments));
       // document.querySelector('.social__comments').innerHTML = '';
 
 
