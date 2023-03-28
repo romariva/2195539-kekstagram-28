@@ -15,8 +15,8 @@ const renderFullsize = (data) => {
 
   const pictureLikeCount = document.querySelector('.likes-count');
   const pictureCommentsCount = document.querySelector('.comments-count');
-  const pictureComments = document.querySelector('.social__comments');
   const pictureDesc = document.querySelector('.social__caption');
+  // const pictureComments = document.querySelector('.social__comments');
 
 
   pictureContainer.addEventListener('click', (evt) => {
@@ -31,9 +31,7 @@ const renderFullsize = (data) => {
       pictureCommentsCount.textContent = currentItem.comments.length;
       pictureDesc.textContent = currentItem.description;
 
-      pictureComments.replaceWith(renderComments(currentItem.comments));
-      // document.querySelector('.social__comments').innerHTML = '';
-
+      renderComments(currentItem.comments);
 
       bigPictureSection.classList.remove('hidden');
       commentCounter.classList.add('hidden');

@@ -1,6 +1,6 @@
 import {getRandomArrayElement, getRandomInteger, getUniqueId} from './util.js';
 
-const COMMENT_COUNT = 30;
+const COMMENT_COUNT = 6;
 
 const FEEDBACKS_COUNT = 25;
 

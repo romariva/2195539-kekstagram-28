@@ -21,7 +21,9 @@ const renderComment = ({avatar, name, message}) => {
 };
 
 const renderComments = (data) => {
-  const comments = createElement('ul', {className:'social__cemments'});
+  const comments = document.querySelector('.social__comments');
+  comments.innerHTML = '';
+
   data.forEach((item) => {
     const comment = renderComment(item);
     comments.append(comment);
