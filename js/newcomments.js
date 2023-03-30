@@ -1,30 +1,28 @@
-import {renderComments} from './comments.js';
-
-const VISIBLE_COMMENTS = 5;
-let shownComments = 0;
-let comments = [];
-
-const commentLoader = document.querySelector('.comments-loader');
-const commentsList = document.querySelector('.social__comments');
-const pictureCommentsCount = document.querySelector('.comments-count');
+const COMMENT_SHOW_COUNT = 5;
+const bigPicture = document.querySelector('.big-picture');
+const commentsLoader = bigPicture.querySelector('.comments-loader');
+const commentList = bigPicture.querySelector('.social__comments');
+const commentsCount = bigPicture.querySelector('.social__comment-count');
+const commentListItem = bigPicture.querySelector('.social__comment');
+commentListItem.classList.add('hidden');
 
 const renderNewComments = () => {
-  shownComments += VISIBLE_COMMENTS;
-  if (shownComments >= comments.length) {
-    commentLoader.classList.add('hidden');
-    shownComments = comments.length;
-  } else {
-    commentLoader.classList.remove('hidden');
+  const hiddenComments = commentList.querySelectorAll('.hidden');
+  if (hiddenComments.length > COMMENT_SHOW_COUNT) {
+    showComments(hiddenComments, COMMENT_SHOW_COUNT);
+  } else if(hiddenComments.length <= COMMENT_SHOW_COUNT) {
+    showComments(hiddenComments,hiddenComments.length);
+    commentsLoader.classList.add('hidden');
   }
-  const fragment = document.createDocumentFragment();
-  for (let i = 0; i < shownComments; i++) {
-    const commentElement = renderComments(comments[i]);
-    fragment.append(commentElement);
-  }
-
-  commentsList.innerHTML = '';
-  commentsList.append(fragment);
-  pictureCommentsCount.innerHTML = `${shownComments} из <span class="comments-count">${comments.length}</span> комментариев`;
 };
+
+function showComments (hiddenComments, count) {
+  for (let i = 0; i < count; i++) {
+    hiddenComments[i].classList.remove('hidden');
+  }
+  commentsCount.textContent = `${commentList.children.length - commentList.querySelectorAll('.hidden').length} из ${commentList.children.length} комментариев`;
+}
+
+commentsLoader.addEventListener('click', renderNewComments);
 
 export {renderNewComments};
