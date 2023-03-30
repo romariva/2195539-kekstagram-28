@@ -1,8 +1,8 @@
 import {isEscapeKey} from './util.js';
 import {renderComments} from './comments.js';
+import {renderNewComments} from './newcomments.js';
 
 const renderFullsize = (data) => {
-
   const body = document.querySelector('body');
   const bigPictureSection = document.querySelector('.big-picture');
   const pictureContainer = document.querySelector('.pictures');
@@ -10,14 +10,10 @@ const renderFullsize = (data) => {
   const pictureImg = document.querySelector('.big-picture__img img');
   // const closeSection = document.querySelector('.overlay');
 
-  const commentCounter = document.querySelector('.social__comment-count');
-  const commentLoader = document.querySelector('.comments-loader');
-
   const pictureLikeCount = document.querySelector('.likes-count');
   const pictureCommentsCount = document.querySelector('.comments-count');
   const pictureDesc = document.querySelector('.social__caption');
-  // const pictureComments = document.querySelector('.social__comments');
-
+  const commentLoader = document.querySelector('.comments-loader');
 
   pictureContainer.addEventListener('click', (evt) => {
     evt.preventDefault();
@@ -34,11 +30,9 @@ const renderFullsize = (data) => {
       renderComments(currentItem.comments);
 
       bigPictureSection.classList.remove('hidden');
-      commentCounter.classList.add('hidden');
-      commentLoader.classList.add('hidden');
     }
-
     body.classList.add('.modal-open');
+    commentLoader.addEventListener('click', renderNewComments);
   });
 
   //закрыть при ESC
@@ -46,8 +40,6 @@ const renderFullsize = (data) => {
     if (isEscapeKey(evt)) {
       evt.preventDefault();
       bigPictureSection.classList.add('hidden');
-      commentCounter.classList.remove('hidden');
-      commentLoader.classList.remove('hidden');
       body.classList.remove('.modal-open');
       //отписаться от события
       document.removeEventListener('keydown', onDocumentKeydown);
@@ -62,6 +54,7 @@ const renderFullsize = (data) => {
   // closeSection.addEventListener('click', () => {
   //   closeSection.classList.add('hidden');
   // });
+
 
 };
 
