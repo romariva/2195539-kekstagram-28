@@ -8,7 +8,7 @@ const renderFullsize = (data) => {
   const pictureContainer = document.querySelector('.pictures');
   const closeButton = document.querySelector('.big-picture__cancel');
   const pictureImg = document.querySelector('.big-picture__img img');
-  // const closeSection = document.querySelector('.overlay');
+  const closeSection = document.querySelector('.overlay');
 
   const pictureLikeCount = document.querySelector('.likes-count');
   const pictureCommentsCount = document.querySelector('.comments-count');
@@ -20,7 +20,6 @@ const renderFullsize = (data) => {
     const currentLink = evt.target.closest('[data-picture-id]');
     if (currentLink){
       const currentItem = data.find((item) => item.id === currentLink.dataset.pictureId);
-
       pictureImg.src = currentItem.url;
       pictureImg.alt = currentItem.description;
       pictureLikeCount.textContent = currentItem.likes;
@@ -51,11 +50,12 @@ const renderFullsize = (data) => {
     bigPictureSection.classList.add('hidden');
   });
   //закрытие на overlay
-  // closeSection.addEventListener('click', () => {
-  //   closeSection.classList.add('hidden');
-  // });
-
-
+  closeSection.addEventListener('click', (evt) => {
+    const overlay = evt.target.closest('.big-picture__preview');
+    if (!overlay) {
+      closeSection.classList.add('hidden');
+    }
+  });
 };
 
 export {renderFullsize};
