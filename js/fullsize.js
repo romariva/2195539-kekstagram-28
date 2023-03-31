@@ -51,9 +51,8 @@ const renderFullsize = (data) => {
   });
   //закрытие на overlay
   closeSection.addEventListener('click', (evt) => {
-    const overlay = evt.target.closest('.big-picture__preview');
-    if (!overlay) {
-      closeSection.classList.add('hidden');
+    if (evt.target === closeSection){
+      evt.currentTarget.classList.add('hidden');
     }
   });
 };
