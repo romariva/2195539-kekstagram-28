@@ -1,3 +1,4 @@
+//функция для отрисовки изображений
 const renderPictureList = (data) => {
 //находим шаблон и его содержимое
   const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
@@ -8,11 +9,12 @@ const renderPictureList = (data) => {
   //создаем фрагмент для вставки
   const pictureFragment = document.createDocumentFragment();
 
-  data.forEach(({url, likes, comments}) => {
+  data.forEach(({id, url, likes, comments}) => {
     const pictureElement = pictureTemplate.cloneNode(true);
     pictureElement.querySelector('.picture__img').src = url;
     pictureElement.querySelector('.picture__likes').textContent = likes;
-    pictureElement.querySelector('.picture__comments').textContent = comments.length;
+    pictureElement.querySelector('.picture__comments').textContent = comments.length; //используем только колличество комментов.
+    pictureElement.dataset.pictureId = id;
     pictureFragment.append(pictureElement);
   });
   pictureContainer.append(pictureFragment);
