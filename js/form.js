@@ -52,3 +52,14 @@ closeModalWindowButton.addEventListener('click', closeModalWindow);
 
 //при изменении файла сработает  обработчик
 uploadFileField.addEventListener('change', () => openModalWindow());
+
+const formSubmit = () => {
+  form.addEventListener('submit',(evt) => {
+    evt.preventDefault();
+    if (pristine.validate()) {
+      form.submit();
+    }
+  });
+};
+
+export {formSubmit};
