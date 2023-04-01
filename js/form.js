@@ -1,4 +1,5 @@
 import {resetScale} from './scale.js';
+import {resetEffects} from './effect.js';
 
 const TAG_ERROR_TEXT = 'Неправильно заполнено поле';
 const COMMENT_ERROR_TEXT_MAXLENGTH = 'Длина комментария не может составлять больше 140 символов';
