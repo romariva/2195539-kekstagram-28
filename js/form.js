@@ -1,4 +1,3 @@
-import { reset } from 'browser-sync';
 import {resetScale} from './scale.js';
 
 const TAG_ERROR_TEXT = 'Неправильно заполнено поле';
@@ -85,11 +84,11 @@ const openModalWindow = () => {
   document.addEventListener('keydown', onDocumentEscapeKeydown);
 };
 
-//закрывает модальное окно + удаляет обработчик событий
+//закрывает модальное окно + удаляет обработчик событий, сброс значений формы
 const closeModalWindow = () => {
   form.reset();
   resetScale();
-  reset.Effects();
+  resetEffects();
   pristine.reset();
   modalShow.classList.add('hidden');
   body.classList.remove('modal-open');
