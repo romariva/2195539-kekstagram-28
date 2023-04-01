@@ -24,3 +24,31 @@ const pristine = new Pristine(form, {
   errorTextParent:'img-upload__field-wrapper',
   errorTextClass:'img-upload__field-wrapper--error',
 });
+
+//открывает модальное окно + блокирует скролл + добавляет обработчик событий
+const openModalWindow = () => {
+  modalShow.classList.remove('hidden');
+  body.classList.add('modal-open');
+  document.addEventListener('keydown', onDocumentEscapeKeydown);
+};
+
+//закрывает модальное окно + удаляет обработчик событий
+const closeModalWindow = () => {
+  modalShow.classList.add('hidden');
+  body.classList.remove('modal-open');
+  document.removeEventListener('keydown', onDocumentEscapeKeydown);
+};
+
+//закрывает  при нажатии Escape условии, что поля хэш и текстареа не в фокусе
+function onDocumentEscapeKeydown (evt) {
+  if (evt.key === 'Escape' && !(document.activeElement === hashtagsField || document.activeElement === commentField)) {
+    evt.preventDefault();
+    closeModalWindow();
+  }
+}
+
+//обработчик события -  закрытие кнопке крестик
+closeModalWindowButton.addEventListener('click', closeModalWindow);
+
+//при изменении файла сработает  обработчик
+uploadFileField.addEventListener('change', () => openModalWindow());
