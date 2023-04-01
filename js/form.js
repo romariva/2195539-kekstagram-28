@@ -27,6 +27,13 @@ const pristine = new Pristine(form, {
 
 //валидация хэштэгов
 
+const validateTags = (value) => {
+  const tags = value
+    .trim()
+    .split(' ')
+    .filter((tag) => tag.trim().length);
+};
+
 pristine.addValidator(
   hashtagsField,
   validateTags,
