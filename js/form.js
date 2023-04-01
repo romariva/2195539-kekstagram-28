@@ -58,11 +58,17 @@ pristine.addValidator(
 
 //валидация комментариев
 
+//проверка минимальной длины комментария
+const validateCommentMin = (value) => value.length > MIN_TEXT_COMMENTS;
+
 pristine.addValidator(
   commentField,
   validateCommentMin,
   COMMENT_ERROR_TEXT_MINLENGTH
 );
+
+//проверка максимальной длины комментария
+const validateCommentMax = (value) => value.length <= MAX_TEXT_COMMENTS;
 
 pristine.addValidator(
   commentField,
