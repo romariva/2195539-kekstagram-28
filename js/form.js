@@ -1,3 +1,6 @@
+import { reset } from 'browser-sync';
+import {resetScale} from './scale.js';
+
 const TAG_ERROR_TEXT = 'Неправильно заполнено поле';
 const COMMENT_ERROR_TEXT_MAXLENGTH = 'Длина комментария не может составлять больше 140 символов';
 const COMMENT_ERROR_TEXT_MINLENGTH = 'Длина комментария не может составлять меньше 5 символов';
@@ -84,6 +87,10 @@ const openModalWindow = () => {
 
 //закрывает модальное окно + удаляет обработчик событий
 const closeModalWindow = () => {
+  form.reset();
+  resetScale();
+  reset.Effects();
+  pristine.reset();
   modalShow.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentEscapeKeydown);
