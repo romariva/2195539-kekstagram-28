@@ -31,15 +31,21 @@ pristine.addValidator(
   hashtagsField,
   validateTags,
   TAG_ERROR_TEXT
-)
+);
 
 //валидация комментариев
 
 pristine.addValidator(
   commentField,
-  validateTags,
-  TAG_ERROR_TEXT
-)
+  validateCommentMin,
+  COMMENT_ERROR_TEXT_MINLENGTH
+);
+
+pristine.addValidator(
+  commentField,
+  validateCommentMax,
+  COMMENT_ERROR_TEXT_MAXLENGTH
+);
 
 //открывает модальное окно + блокирует скролл + добавляет обработчик событий
 const openModalWindow = () => {
