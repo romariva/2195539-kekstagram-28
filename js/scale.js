@@ -1,4 +1,4 @@
-const DEFOULT_SCALE = 100;
+const DEFAULT_SCALE = 100;
 const MIN_SCALE = 25;
 const MAX_SCALE = 100;
 const SCALE_STEP = 25;
@@ -25,12 +25,19 @@ const onSmallerButtonClick = () => {
 };
 
 //кнопка для увеличения изображения
-
 const onBiggerButtonClick = () => {
   const currentValue = parseInt(valueScaleElement.value, 10);
-  let newValue = currentValue - SCALE_STEP;
+  let newValue = currentValue + SCALE_STEP;
   if (newValue < MAX_SCALE) {
     newValue = MAX_SCALE;
   }
   scaleImage(newValue);
 };
+
+//сброс масштаба поумолчанию
+const resetScale = () => scaleImage(DEFAULT_SCALE);
+
+scaleButtonSmaller.addEventListener('click', onSmallerButtonClick);
+scaleButtonBigger.addEventListener('click', onBiggerButtonClick);
+
+export {resetScale};
