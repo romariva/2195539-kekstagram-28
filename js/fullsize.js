@@ -16,7 +16,6 @@ const renderFullsize = (data) => {
   const commentLoader = document.querySelector('.comments-loader');
 
   pictureContainer.addEventListener('click', (evt) => {
-    evt.preventDefault();
     const currentLink = evt.target.closest('[data-picture-id]');
     if (currentLink){
       const currentItem = data.find((item) => item.id === currentLink.dataset.pictureId);
@@ -27,6 +26,7 @@ const renderFullsize = (data) => {
       pictureDesc.textContent = currentItem.description;
 
       renderComments(currentItem.comments);
+      evt.preventDefault();
 
       bigPictureSection.classList.remove('hidden');
     }
