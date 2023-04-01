@@ -27,11 +27,27 @@ const pristine = new Pristine(form, {
 
 //валидация хэштэгов
 
+//проверка на пустую строку
+const isEmpty = (tags) => tags.length > 0;
+
+//функция проверяет тэг регулярным выражением
+const hasValidTag = (tag) => VALID_SYMBOLS.test(tag);
+
+//функция для проверки колличества
+const hasValidCount = (tags) => tags.length <= MAX_TEXT_HASHTAGS;
+
+//проверка на уникальность хэштегов
+const hasUniqueTags = (tags) => {
+  const lowerCaseTags = tags.map((tag)=>tag.toLowerCase());
+  return lowerCaseTags.length === new Set(lowerCaseTags).size;
+};
+
 const validateTags = (value) => {
   const tags = value
     .trim()
     .split(' ')
     .filter((tag) => tag.trim().length);
+  return hasValidCount(tags) && hasUniqueTags(tags) && tags.every(hasValidTag) && isEmpty(tags);
 };
 
 pristine.addValidator(
