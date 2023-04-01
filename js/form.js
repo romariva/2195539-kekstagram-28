@@ -18,12 +18,28 @@ const closeModalWindowButton = document.querySelector('.img-upload__cancel');
 
 const form = document.querySelector('.img-upload__form');
 
-//объявление Pristine
+//объявление библиотеки Pristine
 const pristine = new Pristine(form, {
   classTo: 'img-upload__field-wrapper',
   errorTextParent:'img-upload__field-wrapper',
   errorTextClass:'img-upload__field-wrapper--error',
 });
+
+//валидация хэштэгов
+
+pristine.addValidator(
+  hashtagsField,
+  validateTags,
+  TAG_ERROR_TEXT
+)
+
+//валидация комментариев
+
+pristine.addValidator(
+  commentField,
+  validateTags,
+  TAG_ERROR_TEXT
+)
 
 //открывает модальное окно + блокирует скролл + добавляет обработчик событий
 const openModalWindow = () => {
@@ -39,7 +55,7 @@ const closeModalWindow = () => {
   document.removeEventListener('keydown', onDocumentEscapeKeydown);
 };
 
-//закрывает  при нажатии Escape условии, что поля хэш и текстареа не в фокусе
+//закрывает при нажатии Escape условии, что поля хэш и текстареа не в фокусе
 function onDocumentEscapeKeydown (evt) {
   if (evt.key === 'Escape' && !(document.activeElement === hashtagsField || document.activeElement === commentField)) {
     evt.preventDefault();
@@ -53,6 +69,7 @@ closeModalWindowButton.addEventListener('click', closeModalWindow);
 //при изменении файла сработает  обработчик
 uploadFileField.addEventListener('change', () => openModalWindow());
 
+// отправка формы с валидацией Prestine
 const formSubmit = () => {
   form.addEventListener('submit',(evt) => {
     evt.preventDefault();
