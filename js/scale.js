@@ -14,7 +14,7 @@ const scaleImage = (value) => {
   valueScaleElement.value = `${value}%`;
 };
 
-//кнопка для уменьшения изодражения
+//кнопка для уменьшения изображения
 const onSmallerButtonClick = () => {
   const currentValue = parseInt(valueScaleElement.value, 10);
   let newValue = currentValue - SCALE_STEP;

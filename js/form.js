@@ -10,7 +10,7 @@ const MIN_TEXT_COMMENTS = 5;
 const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
 
 const uploadFileField = document.querySelector('#upload-file');
-const body = document.querySelector('body');
+const body = document.body;
 const modalShow = document.querySelector('.img-upload__overlay');
 
 const hashtagsField = document.querySelector('.text__hashtags');
