@@ -1,3 +1,6 @@
+import {resetScale} from './scale.js';
+import {resetEffects} from './effect.js';
+
 const TAG_ERROR_TEXT = 'Неправильно заполнено поле';
 const COMMENT_ERROR_TEXT_MAXLENGTH = 'Длина комментария не может составлять больше 140 символов';
 const COMMENT_ERROR_TEXT_MINLENGTH = 'Длина комментария не может составлять меньше 5 символов';
@@ -6,9 +9,8 @@ const MAX_TEXT_COMMENTS = 140;
 const MIN_TEXT_COMMENTS = 5;
 const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
 
-
 const uploadFileField = document.querySelector('#upload-file');
-const body = document.querySelector('body');
+const body = document.body;
 const modalShow = document.querySelector('.img-upload__overlay');
 
 const hashtagsField = document.querySelector('.text__hashtags');
@@ -83,8 +85,12 @@ const openModalWindow = () => {
   document.addEventListener('keydown', onDocumentEscapeKeydown);
 };
 
-//закрывает модальное окно + удаляет обработчик событий
+//закрывает модальное окно + удаляет обработчик событий, сброс значений формы
 const closeModalWindow = () => {
+  form.reset();
+  resetScale();
+  resetEffects();
+  pristine.reset();
   modalShow.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentEscapeKeydown);

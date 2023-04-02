@@ -3,7 +3,7 @@ import {renderComments} from './comments.js';
 import {renderNewComments} from './newcomments.js';
 
 const renderFullsize = (data) => {
-  const body = document.querySelector('body');
+  const body = document.body;
   const bigPictureSection = document.querySelector('.big-picture');
   const pictureContainer = document.querySelector('.pictures');
   const closeButton = document.querySelector('.big-picture__cancel');
