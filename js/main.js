@@ -22,6 +22,5 @@ renderFullsize(data);
 //     }
 //   );
 
-
 //функция отправки формы
 formSubmit();
