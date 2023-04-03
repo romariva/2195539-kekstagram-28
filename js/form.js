@@ -134,7 +134,7 @@ const unblockSubmitButton = () => {
   submitButton.textContent = SubmitButtonText.IDLE;
 };
 
-// отправка формы с валидацией Prestine
+// отправка формы с валидацией Prestine + sendData
 const formSubmit = (onSuccess) => {
   form.addEventListener('submit',(evt) => {
     evt.preventDefault();
