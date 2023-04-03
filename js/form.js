@@ -5,10 +5,8 @@ import {sendData} from './api.js';
 
 const TAG_ERROR_TEXT = 'Неправильно заполнено поле';
 const COMMENT_ERROR_TEXT_MAXLENGTH = 'Длина комментария не может составлять больше 140 символов';
-const COMMENT_ERROR_TEXT_MINLENGTH = 'Длина комментария не может составлять меньше 5 символов';
 const MAX_TEXT_HASHTAGS = 5;
 const MAX_TEXT_COMMENTS = 140;
-const MIN_TEXT_COMMENTS = 5;
 const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
 
 //сообщения при отправки формы
@@ -40,9 +38,6 @@ const pristine = new Pristine(form, {
 
 //валидация хэштэгов
 
-//проверка на пустую строку
-const isEmpty = (tags) => tags.length > 0;
-
 //функция проверяет тэг регулярным выражением
 const hasValidTag = (tag) => VALID_SYMBOLS.test(tag);
 
@@ -60,7 +55,7 @@ const validateTags = (value) => {
     .trim()
     .split(' ')
     .filter((tag) => tag.trim().length);
-  return hasValidCount(tags) && hasUniqueTags(tags) && tags.every(hasValidTag) && isEmpty(tags);
+  return hasValidCount(tags) && hasUniqueTags(tags) && tags.every(hasValidTag);
 };
 
 pristine.addValidator(
@@ -70,15 +65,6 @@ pristine.addValidator(
 );
 
 //валидация комментариев
-
-//проверка минимальной длины комментария
-const validateCommentMin = (value) => value.length > MIN_TEXT_COMMENTS;
-
-pristine.addValidator(
-  commentField,
-  validateCommentMin,
-  COMMENT_ERROR_TEXT_MINLENGTH
-);
 
 //проверка максимальной длины комментария
 const validateCommentMax = (value) => value.length <= MAX_TEXT_COMMENTS;
