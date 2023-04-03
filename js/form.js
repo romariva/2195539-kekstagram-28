@@ -3,15 +3,6 @@ import {resetEffects} from './effect.js';
 import {showAlert} from './util.js';
 import {sendData} from './api.js';
 
-//сообщения при отправке формы
-const SubmitButtonText = {
-  IDLE: 'Данные отправлены',
-  SENDING: 'Сохраняю...',
-  POSTING: 'Сохранить',
-};
-
-const submitButton = document.querySelector('#upload-submit');
-
 const TAG_ERROR_TEXT = 'Неправильно заполнено поле';
 const COMMENT_ERROR_TEXT_MAXLENGTH = 'Длина комментария не может составлять больше 140 символов';
 const COMMENT_ERROR_TEXT_MINLENGTH = 'Длина комментария не может составлять меньше 5 символов';
@@ -19,6 +10,15 @@ const MAX_TEXT_HASHTAGS = 5;
 const MAX_TEXT_COMMENTS = 140;
 const MIN_TEXT_COMMENTS = 5;
 const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
+
+//сообщения при отправки формы
+const SubmitButtonText = {
+  IDLE: 'Данные отправлены',
+  SENDING: 'Сохраняю...',
+  POSTING: 'Сохранить',
+};
+
+const submitButton = document.querySelector('#upload-submit');
 
 const uploadFileField = document.querySelector('#upload-file');
 const body = document.body;
