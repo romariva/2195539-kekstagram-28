@@ -11,9 +11,8 @@ const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
 
 //сообщения при отправки формы
 const SubmitButtonText = {
-  IDLE: 'Данные отправлены',
+  IDLE: 'Сохранить',
   SENDING: 'Сохраняю...',
-  POSTING: 'Сохранить',
 };
 
 const submitButton = document.querySelector('#upload-submit');
@@ -80,7 +79,6 @@ const openModalWindow = () => {
   modalShow.classList.remove('hidden');
   body.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentEscapeKeydown);
-  submitButton.textContent = SubmitButtonText.POSTING;
 };
 
 //закрывает модальное окно + удаляет обработчик событий, сброс значений формы
@@ -110,13 +108,12 @@ uploadFileField.addEventListener('change', () => openModalWindow());
 
 // блокировка кнопки во время отправки формы
 const blockSubmitButton = () => {
-  submitButton.disable = true;
+  submitButton.disabled = true;
   submitButton.textContent = SubmitButtonText.SENDING;
 };
 
-//разблокировка кнопки отправки формы
 const unblockSubmitButton = () => {
-  submitButton.disable = false;
+  submitButton.disabled = false;
   submitButton.textContent = SubmitButtonText.IDLE;
 };
 
