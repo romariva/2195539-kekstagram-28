@@ -1,5 +1,16 @@
 import {resetScale} from './scale.js';
 import {resetEffects} from './effect.js';
+import {showAlert} from './util.js';
+import {sendData} from './api.js';
+
+//сообщения при отправке формы
+const SubmitButtonText = {
+  IDLE: 'Данные отправлены',
+  SENDING: 'Сохраняю...',
+  POSTING: 'Сохранить',
+};
+
+const submitButton = document.querySelector('#upload-submit');
 
 const TAG_ERROR_TEXT = 'Неправильно заполнено поле';
 const COMMENT_ERROR_TEXT_MAXLENGTH = 'Длина комментария не может составлять больше 140 символов';
@@ -83,6 +94,7 @@ const openModalWindow = () => {
   modalShow.classList.remove('hidden');
   body.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentEscapeKeydown);
+  submitButton.textContent = SubmitButtonText.POSTING;
 };
 
 //закрывает модальное окно + удаляет обработчик событий, сброс значений формы
@@ -110,12 +122,31 @@ closeModalWindowButton.addEventListener('click', closeModalWindow);
 //при изменении файла сработает  обработчик
 uploadFileField.addEventListener('change', () => openModalWindow());
 
+// блокировка кнопки во время отправки формы
+const blockSubmitButton = () => {
+  submitButton.disable = true;
+  submitButton.textContent = SubmitButtonText.SENDING;
+};
+
+//разблокировка кнопки отправки формы
+const unblockSubmitButton = () => {
+  submitButton.disable = false;
+  submitButton.textContent = SubmitButtonText.IDLE;
+};
+
 // отправка формы с валидацией Prestine
-const formSubmit = () => {
+const formSubmit = (onSuccess) => {
   form.addEventListener('submit',(evt) => {
     evt.preventDefault();
     if (pristine.validate()) {
-      form.submit();
+      blockSubmitButton();
+      sendData(new FormData(evt.target))
+        .then(onSuccess)
+        .catch((err) => {
+          showAlert(err.message);
+        })
+        .finally(unblockSubmitButton);
+      setTimeout(() => closeModalWindow(), 3000);
     }
   });
 };
