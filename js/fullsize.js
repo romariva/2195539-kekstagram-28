@@ -18,7 +18,7 @@ const renderFullsize = (data) => {
   pictureContainer.addEventListener('click', (evt) => {
     const currentLink = evt.target.closest('[data-picture-id]');
     if (currentLink){
-      const currentItem = data.find((item) => item.id === currentLink.dataset.pictureId);
+      const currentItem = data.find((item) => item.id.toString() === currentLink.dataset.pictureId);
       pictureImg.src = currentItem.url;
       pictureImg.alt = currentItem.description;
       pictureLikeCount.textContent = currentItem.likes;
