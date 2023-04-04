@@ -2,6 +2,7 @@ import {resetScale} from './scale.js';
 import {resetEffects} from './effect.js';
 import {showAlert} from './util.js';
 import {sendData} from './api.js';
+import {getModalSuccess, getModalError} from './modal_upload.js';
 
 const TAG_ERROR_TEXT = 'Неправильно заполнено поле';
 const COMMENT_ERROR_TEXT_MAXLENGTH = 'Длина комментария не может составлять больше 140 символов';
@@ -20,6 +21,7 @@ const submitButton = document.querySelector('#upload-submit');
 const uploadFileField = document.querySelector('#upload-file');
 const body = document.body;
 const modalShow = document.querySelector('.img-upload__overlay');
+
 
 const hashtagsField = document.querySelector('.text__hashtags');
 const commentField = document.querySelector('.text__description');
@@ -124,9 +126,10 @@ const formSubmit = (onSuccess) => {
     if (pristine.validate()) {
       blockSubmitButton();
       sendData(new FormData(evt.target))
-        .then(onSuccess)
+        .then(onSuccess, getModalSuccess())
         .catch((err) => {
           showAlert(err.message);
+          getModalError();
         })
         .finally(unblockSubmitButton);
       setTimeout(() => closeModalWindow(), 3000);
