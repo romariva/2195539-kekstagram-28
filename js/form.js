@@ -126,13 +126,13 @@ const formSubmit = (onSuccess) => {
     if (pristine.validate()) {
       blockSubmitButton();
       sendData(new FormData(evt.target))
-        .then(onSuccess, getModalSuccess())
+        .then(onSuccess)
         .catch((err) => {
           showAlert(err.message);
           getModalError();
         })
-        .finally(unblockSubmitButton);
-      setTimeout(() => closeModalWindow(), 3000);
+        .finally(unblockSubmitButton, getModalSuccess());
+      closeModalWindow();
     }
   });
 };
