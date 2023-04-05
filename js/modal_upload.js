@@ -16,4 +16,5 @@ const getModalError = () => {
   body.appendChild(clonedElement);
 };
 
+
 export {getModalSuccess, getModalError};
