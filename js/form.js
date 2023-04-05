@@ -131,7 +131,8 @@ const formSubmit = (onSuccess) => {
           showAlert(err.message);
           getModalError();
         })
-        .finally(unblockSubmitButton, getModalSuccess());
+        .finally(unblockSubmitButton);
+      getModalSuccess();
       closeModalWindow();
     }
   });

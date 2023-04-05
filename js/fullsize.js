@@ -49,6 +49,7 @@ const renderFullsize = (data) => {
   closeButton.addEventListener('click', () => {
     bigPictureSection.classList.add('hidden');
   });
+
   //закрытие на overlay
   closeSection.addEventListener('click', (evt) => {
     if (evt.target === closeSection){
