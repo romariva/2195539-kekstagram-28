@@ -12,8 +12,8 @@ const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
 
 //сообщения при отправки формы
 const SubmitButtonText = {
-  IDLE: 'Сохранить',
-  SENDING: 'Сохраняю...',
+  IDLE: 'Отправлено',
+  SENDING: 'Идет отправка...',
 };
 
 const submitButton = document.querySelector('#upload-submit');

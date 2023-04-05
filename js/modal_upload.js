@@ -1,5 +1,6 @@
 const body = document.body;
 const modalOk = document.querySelector('#success').content.querySelector('.success');
+
 const modalError = document.querySelector('#error').content.querySelector('.error');
 
 //модальное окно успешной отправки
