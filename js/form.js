@@ -12,8 +12,8 @@ const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
 
 //сообщения при отправки формы
 const SubmitButtonText = {
-  IDLE: 'Отправлено',
-  SENDING: 'Идет отправка...',
+  IDLE: 'Сохранить',
+  SENDING: 'Сохраняю...',
 };
 
 const submitButton = document.querySelector('#upload-submit');
@@ -126,13 +126,14 @@ const formSubmit = (onSuccess) => {
     if (pristine.validate()) {
       blockSubmitButton();
       sendData(new FormData(evt.target))
-        .then(onSuccess, getModalSuccess())
+        .then(onSuccess)
+        .then(getModalSuccess)
         .catch((err) => {
           showAlert(err.message);
           getModalError();
         })
         .finally(unblockSubmitButton);
-      setTimeout(() => closeModalWindow(), 3000);
+      closeModalWindow();
     }
   });
 };
