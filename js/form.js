@@ -128,12 +128,12 @@ const formSubmit = (onSuccess) => {
       sendData(new FormData(evt.target))
         .then(onSuccess)
         .then(getModalSuccess)
+        .then(closeModalWindow)
         .catch((err) => {
           showAlert(err.message);
           getModalError();
         })
         .finally(unblockSubmitButton);
-      closeModalWindow();
     }
   });
 };
