@@ -4,8 +4,8 @@ const body = document.body;
 const modalSuccess = document.querySelector('#success').content.querySelector('.success');
 const modalError = document.querySelector('#error').content.querySelector('.error');
 
-const successButton = document.querySelector('.success__button');
-const errorButton = document.querySelector('.error__button');
+const successButton = modalSuccess.querySelector('.success__button');
+const errorButton = modalError.querySelector('.error__button');
 
 //модальное окно успешной отправки
 const getModalSuccess = () => {
