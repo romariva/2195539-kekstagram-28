@@ -29,7 +29,6 @@ const onDocumentKeydown = document.addEventListener('keydown', (evt) => {
   }
 });
 
-
 //закрытие error
 modalError.addEventListener('click', (evt) => {
   if (evt.target === modalError || evt.target === errorButton){
