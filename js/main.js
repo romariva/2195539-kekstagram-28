@@ -1,4 +1,4 @@
-import {renderPictureList} from './picture.js';
+import {renderPictures} from './picture.js';
 import {renderFullsize} from './fullsize.js';
 import {formSubmit} from './form.js';
 import {showAlert, debounce} from './util.js';
@@ -8,9 +8,9 @@ import { loadLocalFile } from './load_picture.js';
 
 getData()
   .then((data) => {
-    const debouncedRenderPictureList = debounce(renderPictureList);
+    const debouncedRenderPictureList = debounce(renderPictures);
     init (data, debouncedRenderPictureList);
-    renderPictureList(getFilter());
+    renderPictures(getFilter());
     renderFullsize(data);
   })
   .catch(
