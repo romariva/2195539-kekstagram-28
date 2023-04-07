@@ -94,6 +94,13 @@ const closeModalWindow = () => {
   document.removeEventListener('keydown', onDocumentEscapeKeydown);
 };
 
+//закрытие на overlay
+modalShow.addEventListener('click', (evt) => {
+  if (evt.target === modalShow){
+    evt.currentTarget.classList.add('hidden');
+  }
+});
+
 //закрывает при нажатии Escape условии, что поля хэш и текстареа не в фокусе
 function onDocumentEscapeKeydown (evt) {
   if (evt.key === 'Escape' && !(document.activeElement === hashtagsField || document.activeElement === commentField)) {
