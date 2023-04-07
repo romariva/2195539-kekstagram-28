@@ -7,12 +7,10 @@ import {init, getFilter} from './filter.js';
 
 getData()
   .then((data) => {
-    const debouncedrenderFullsize = debounce(renderFullsize);
-    init (data, debouncedrenderFullsize);
-    renderFullsize(getFilter());
     const debouncedrenderPictureList = debounce(renderPictureList);
     init (data, debouncedrenderPictureList);
     renderPictureList(getFilter());
+    renderFullsize(data);
   })
   .catch(
     (err) => {
