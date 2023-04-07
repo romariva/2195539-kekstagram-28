@@ -145,4 +145,4 @@ const formSubmit = (onSuccess) => {
   });
 };
 
-export {formSubmit};
+export {formSubmit, closeModalWindow};
