@@ -1,4 +1,3 @@
-
 import {closeModalWindow} from './form.js';
 import {showAlert} from './util.js';
 

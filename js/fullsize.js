@@ -7,7 +7,6 @@ const renderFullsize = (data) => {
   const pictureContainer = document.querySelector('.pictures');
   const closeButton = document.querySelector('.big-picture__cancel');
   const pictureImg = document.querySelector('.big-picture__img img');
-  const closeSection = document.querySelector('.overlay');
 
   const pictureLikeCount = document.querySelector('.likes-count');
   const pictureCommentsCount = document.querySelector('.comments-count');

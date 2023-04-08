@@ -4,7 +4,7 @@ import {formSubmit} from './form.js';
 import {showAlert, debounce} from './util.js';
 import {getData} from './api.js';
 import {init, getFilter} from './filter.js';
-import { loadLocalFile } from './load_picture.js';
+import {loadLocalFile} from './load-picture.js';
 
 getData()
   .then((data) => {

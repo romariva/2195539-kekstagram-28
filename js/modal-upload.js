@@ -19,14 +19,14 @@ modalSuccess.addEventListener('click', (evt) => {
   }
 });
 
-//закрыть при ESC
-const onDocumentKeydown = document.addEventListener('keydown', (evt) => {
+// //закрыть при ESC
+const onDocumentKeydown2 = document.addEventListener('keydown', (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     body.removeChild(modalSuccess);
     body.removeChild(modalError);
     //отписаться от события
-    document.removeEventListener('keydown', onDocumentKeydown);
+    document.removeEventListener('keydown', onDocumentKeydown2);
   }
 });
 

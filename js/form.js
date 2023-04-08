@@ -2,7 +2,7 @@ import {resetScale} from './scale.js';
 import {resetEffects} from './effect.js';
 import {showAlert} from './util.js';
 import {sendData} from './api.js';
-import {getModalSuccess, getModalError} from './modal_upload.js';
+import {getModalSuccess, getModalError} from './modal-upload.js';
 
 const TAG_ERROR_TEXT = 'Неправильно заполнено поле';
 const COMMENT_ERROR_TEXT_MAXLENGTH = 'Длина комментария не может составлять больше 140 символов';
@@ -27,7 +27,6 @@ const hashtagsField = document.querySelector('.text__hashtags');
 const commentField = document.querySelector('.text__description');
 
 const closeModalWindowButton = document.querySelector('.img-upload__cancel');
-const modalError = document.querySelector('#error');
 
 const form = document.querySelector('.img-upload__form');
 
