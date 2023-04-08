@@ -42,14 +42,14 @@ const renderFullsize = (data) => {
       evt.preventDefault();
       bigPictureSection.classList.remove('hidden');
     }
-    body.classList.add('.modal-open');
+    body.classList.add('modal-open');
   });
 
   const onDocumentKeydown = document.addEventListener('keydown', (evt) => {
     if (isEscapeKey(evt)) {
       evt.preventDefault();
       bigPictureSection.classList.add('hidden');
-      body.classList.remove('.modal-open');
+      body.classList.remove('modal-open');
       //отписаться от события
       document.removeEventListener('keydown', onDocumentKeydown);
     }
