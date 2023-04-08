@@ -24,10 +24,12 @@ const onDocumentKeydown = document.addEventListener('keydown', (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     body.removeChild(modalSuccess);
+    body.removeChild(modalError);
     //отписаться от события
     document.removeEventListener('keydown', onDocumentKeydown);
   }
 });
+
 
 //закрытие error
 modalError.addEventListener('click', (evt) => {

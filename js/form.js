@@ -27,6 +27,7 @@ const hashtagsField = document.querySelector('.text__hashtags');
 const commentField = document.querySelector('.text__description');
 
 const closeModalWindowButton = document.querySelector('.img-upload__cancel');
+const modalError = document.querySelector('#error');
 
 const form = document.querySelector('.img-upload__form');
 

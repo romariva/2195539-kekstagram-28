@@ -56,11 +56,11 @@ const renderFullsize = (data) => {
   });
 
   //закрытие на overlay
-  closeSection.addEventListener('click', (evt) => {
-    if (evt.target === closeSection){
-      evt.currentTarget.classList.add('hidden');
-    }
-  });
+//   closeSection.addEventListener('click', (evt) => {
+//     if (evt.target === closeSection){
+//       evt.currentTarget.classList.add('hidden');
+//     }
+//   });
 };
 
 export {renderFullsize};
