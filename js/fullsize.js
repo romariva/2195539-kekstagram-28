@@ -1,6 +1,8 @@
 import {isEscapeKey} from './util.js';
 import {renderComments} from './comments.js';
 
+const MAX_COMMENTS_NUMBER = 5;
+
 const renderFullsize = (data) => {
   const body = document.body;
   const bigPictureSection = document.querySelector('.big-picture');
@@ -25,7 +27,7 @@ const renderFullsize = (data) => {
       pictureCommentsCount.textContent = currentItem.comments.length;
       pictureDesc.textContent = currentItem.description;
 
-      renderComments(currentItem.comments.slice(0, 5));
+      renderComments(currentItem.comments.slice(0, MAX_COMMENTS_NUMBER));
 
       commentLoader.addEventListener('click', () => {
         renderComments(currentItem.comments);
@@ -38,7 +40,6 @@ const renderFullsize = (data) => {
     body.classList.add('.modal-open');
   });
 
-  //закрыть при ESC
   const onDocumentKeydown = document.addEventListener('keydown', (evt) => {
     if (isEscapeKey(evt)) {
       evt.preventDefault();
@@ -49,7 +50,6 @@ const renderFullsize = (data) => {
     }
   });
 
-  //закрыть кнопкой Крестик
   closeButton.addEventListener('click', () => {
     bigPictureSection.classList.add('hidden');
   });
