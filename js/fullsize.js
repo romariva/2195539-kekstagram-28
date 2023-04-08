@@ -11,10 +11,10 @@ const renderFullsize = (data) => {
   const pictureImg = document.querySelector('.big-picture__img img');
 
   const pictureLikeCount = document.querySelector('.likes-count');
-  const pictureCommentsCount = document.querySelector('.comments-count');
+
   const pictureDesc = document.querySelector('.social__caption');
   const commentLoader = document.querySelector('.comments-loader');
-  const commentList = document.querySelector('.social__comments');
+
   const commentsCount = document.querySelector('.social__comment-count');
 
   pictureContainer.addEventListener('click', (evt) => {
@@ -24,14 +24,19 @@ const renderFullsize = (data) => {
       pictureImg.src = currentItem.url;
       pictureImg.alt = currentItem.description;
       pictureLikeCount.textContent = currentItem.likes;
-      pictureCommentsCount.textContent = currentItem.comments.length;
       pictureDesc.textContent = currentItem.description;
 
       renderComments(currentItem.comments.slice(0, MAX_COMMENTS_NUMBER));
 
+      const fromCommentsQty =
+       currentItem.comments.length > 5 ? 5 : currentItem.comments.length;
+      const CommentsQty = currentItem.comments.length;
+
+      commentsCount.innerHTML = `${fromCommentsQty} из <span class='comments-count'>${CommentsQty}</span> комментариев`;
+
       commentLoader.addEventListener('click', () => {
         renderComments(currentItem.comments);
-        commentsCount.textContent = `${commentList.children.length - commentList.querySelectorAll('.hidden').length} из ${commentList.children.length} комментариев`;
+        commentsCount.innerHTML = `${fromCommentsQty} из ${CommentsQty} комментариев`;
       });
 
       evt.preventDefault();
