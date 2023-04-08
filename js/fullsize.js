@@ -1,6 +1,5 @@
 import {isEscapeKey} from './util.js';
 import {renderComments} from './comments.js';
-import {renderNewComments} from './newcomments.js';
 
 const renderFullsize = (data) => {
   const body = document.body;
@@ -14,6 +13,8 @@ const renderFullsize = (data) => {
   const pictureCommentsCount = document.querySelector('.comments-count');
   const pictureDesc = document.querySelector('.social__caption');
   const commentLoader = document.querySelector('.comments-loader');
+  const commentList = document.querySelector('.social__comments');
+  const commentsCount = document.querySelector('.social__comment-count');
 
   pictureContainer.addEventListener('click', (evt) => {
     const currentLink = evt.target.closest('[data-picture-id]');
@@ -25,13 +26,17 @@ const renderFullsize = (data) => {
       pictureCommentsCount.textContent = currentItem.comments.length;
       pictureDesc.textContent = currentItem.description;
 
-      renderComments(currentItem.comments);
-      evt.preventDefault();
+      renderComments(currentItem.comments.slice(0, 5));
 
+      commentLoader.addEventListener('click', () => {
+        renderComments(currentItem.comments);
+        commentsCount.textContent = `${commentList.children.length - commentList.querySelectorAll('.hidden').length} из ${commentList.children.length} комментариев`;
+      });
+
+      evt.preventDefault();
       bigPictureSection.classList.remove('hidden');
     }
     body.classList.add('.modal-open');
-    commentLoader.addEventListener('click', renderNewComments);
   });
 
   //закрыть при ESC

@@ -36,12 +36,10 @@ modalError.addEventListener('click', (evt) => {
   }
 });
 
-
 //модальное окно ошибка отправки
 const getModalError = () => {
   body.appendChild(modalError);
   modalSuccess.addEventListener('click', getModalError);
 };
-
 
 export {getModalSuccess, getModalError};

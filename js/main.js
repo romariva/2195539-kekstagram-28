@@ -18,7 +18,7 @@ getData()
       showAlert(err.message);
     }
   );
-
+console.log(renderPictures())
 //функция отправки формы
 formSubmit();
 
