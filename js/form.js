@@ -59,7 +59,7 @@ pristine.addValidator(
 );
 
 
-const openModalWindow = () => {
+const onImageSelect = () => {
   modalShow.classList.remove('hidden');
   body.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentEscapeKeydown);
@@ -68,7 +68,7 @@ const openModalWindow = () => {
   }
 };
 
-const closeModalWindow = () => {
+const closeImageLoadModal = () => {
   form.reset();
   resetScale();
   resetEffects();
@@ -87,13 +87,13 @@ modalShow.addEventListener('click', (evt) => {
 function onDocumentEscapeKeydown (evt) {
   if (evt.key === 'Escape' && !(document.activeElement === hashtagsField || document.activeElement === commentField)) {
     evt.preventDefault();
-    closeModalWindow();
+    closeImageLoadModal();
   }
 }
 
-closeModalWindowButton.addEventListener('click', closeModalWindow);
+closeModalWindowButton.addEventListener('click', closeImageLoadModal);
 
-uploadFileField.addEventListener('change', () => openModalWindow());
+uploadFileField.addEventListener('change', () => onImageSelect());
 
 const blockSubmitButton = () => {
   submitButton.disabled = true;
@@ -113,7 +113,7 @@ const formSubmit = (onSuccess) => {
       sendData(new FormData(evt.target))
         .then(onSuccess)
         .then(getModalSuccess)
-        .then(closeModalWindow)
+        .then(closeImageLoadModal)
         .catch((err) => {
           showAlert(err.message);
           getModalError();
@@ -123,4 +123,4 @@ const formSubmit = (onSuccess) => {
   });
 };
 
-export {formSubmit, closeModalWindow};
+export {formSubmit, closeImageLoadModal};
