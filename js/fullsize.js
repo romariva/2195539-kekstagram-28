@@ -46,7 +46,6 @@ const renderFullsize = (data) => {
       evt.preventDefault();
       bigPictureSection.classList.add('hidden');
       body.classList.remove('modal-open');
-      //отписаться от события
       document.removeEventListener('keydown', onDocumentKeydown);
     }
   });
