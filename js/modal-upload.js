@@ -1,49 +1,47 @@
 import {isEscapeKey} from './util.js';
 
-const body = document.body;
-const modalSuccess = document.querySelector('#success').content.querySelector('.success');
-const modalError = document.querySelector('#error').content.querySelector('.error');
+const successMessage = document.querySelector('#success');
+const errorMessage = document.querySelector('#error');
 
-const successButton = modalSuccess.querySelector('.success__button');
-const errorButton = modalError.querySelector('.error__button');
+const onMessageCloseEvent = (evt) => {
+  if (isEscapeKey(evt) ||
+    evt.target.matches('.success__button') ||
+    evt.target.matches('.success') ||
+    evt.target.matches('.error__button') ||
+    evt.target.matches('.error')) {
+    closeMessage();
+  }
+};
 
-//модальное окно успешной отправки
+//Успешная загрузка фотографии
 const getModalSuccess = () => {
-  body.appendChild(modalSuccess);
+  const successMessageTemplate = successMessage.content.querySelector('.success');
+  const cloneSectionSuccess = successMessageTemplate.cloneNode(true);
+  document.body.appendChild(cloneSectionSuccess);
+  document.addEventListener('keydown', onMessageCloseEvent);
+  cloneSectionSuccess.addEventListener('click', onMessageCloseEvent);
 };
 
-//закрытие succsess
-modalSuccess.addEventListener('click', (evt) => {
-  if (evt.target === modalSuccess || evt.target === successButton){
-    body.removeChild(modalSuccess);
-  }
-});
-
-// //закрыть при ESC
-const onDocumentKeydown = document.addEventListener('keydown', (evt) => {
-  if (isEscapeKey(evt)) {
-    evt.preventDefault();
-    if (modalSuccess || modalError) {
-      body.removeChild(modalSuccess);
-      body.removeChild(modalError);
-    }
-
-    document.removeEventListener('keydown', onDocumentKeydown);
-  }
-});
-
-
-//закрытие error
-modalError.addEventListener('click', (evt) => {
-  if (evt.target === modalError || evt.target === errorButton){
-    body.removeChild(modalError);
-  }
-});
-
-//модальное окно ошибка отправки
+//Загрузка с ошибкой
 const getModalError = () => {
-  body.appendChild(modalError);
-  modalSuccess.addEventListener('click', getModalError);
+  const errorMessageTemplate = errorMessage.content.querySelector('.error');
+  const cloneSectionError = errorMessageTemplate.cloneNode(true);
+  document.body.appendChild(cloneSectionError);
+  document.addEventListener('keydown', onMessageCloseEvent);
+  cloneSectionError.addEventListener('click', onMessageCloseEvent);
 };
+
+function closeMessage () {
+  const successMessageElement = document.querySelector('.success');
+  const errorMessageElement = document.querySelector('.error');
+  if (successMessageElement) {
+    successMessageElement.remove();
+  }
+  if (errorMessageElement) {
+    errorMessageElement.remove();
+  }
+  document.removeEventListener('keydown', onMessageCloseEvent);
+}
+
 
 export {getModalSuccess, getModalError};

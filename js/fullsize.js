@@ -9,12 +9,9 @@ const renderFullsize = (data) => {
   const pictureContainer = document.querySelector('.pictures');
   const closeButton = document.querySelector('.big-picture__cancel');
   const pictureImg = document.querySelector('.big-picture__img img');
-
   const pictureLikeCount = document.querySelector('.likes-count');
-
   const pictureDesc = document.querySelector('.social__caption');
   const commentLoader = document.querySelector('.comments-loader');
-
   const commentsCount = document.querySelector('.social__comment-count');
 
   pictureContainer.addEventListener('click', (evt) => {
