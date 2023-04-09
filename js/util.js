@@ -1,6 +1,5 @@
 const ALERT_SHOW_TIME = 7000;
 
-//окно ошибки сверху экрана
 const showAlert = (message) => {
   const alert = document.createElement('div');
   alert.style.zIndex = '100';
@@ -20,7 +19,6 @@ const showAlert = (message) => {
   }, ALERT_SHOW_TIME);
 };
 
-// Получаем рандомное число в заданном диапазоне
 const getRandomInteger = (a, b) => {
   const lower = Math.ceil(Math.min(a, b));
   const upper = Math.floor(Math.max(a, b));
@@ -28,16 +26,12 @@ const getRandomInteger = (a, b) => {
   return Math.floor(result);
 };
 
-// Получаем рандомный элемент массива от первого элемента до последнего
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
-//функция уникального ID
 const getUniqueId = () => getRandomInteger(0, 100).toString() + new Date().getTime().toString();
 
-// функция нажатия Esc
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
-//функция для генерации элемента DOM
 const createElement = (tagName, attributes = {}, text) => {
   const element = document.createElement(tagName);
   Object.assign(element, attributes);

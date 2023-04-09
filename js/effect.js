@@ -1,4 +1,3 @@
-//массив всех эффектов из ТЗ
 const EFFECTS = [
   {
     name: 'none',
@@ -50,10 +49,8 @@ const EFFECTS = [
   },
 ];
 
-//первый эффект из массива, дефолтный
 const DEFAULT_EFFECT = EFFECTS[0];
 
-//здесь храниться выбранный эффект, дефолтный по уполчанию
 let chosenEffect = DEFAULT_EFFECT;
 
 const imgPreviewElement = document.querySelector('.img-upload__preview img');
@@ -62,20 +59,16 @@ const sliderElement = document.querySelector('.effect-level__slider');
 const sliderContainerElement = document.querySelector('.img-upload__effect-level');
 const effectLevelElement = document.querySelector('.effect-level__value');
 
-//проверка выбран ли дефолтный эффект
 const isDefault = () => chosenEffect === DEFAULT_EFFECT;
 
-//показать слайдер
 const showSlider = () => {
   sliderContainerElement.classList.remove('hidden');
 };
 
-//спрятать слайдер
 const hideSlider = () => {
   sliderContainerElement.classList.add('hidden');
 };
 
-//обновляет свойства NoUiSlider
 const updateSlider = () => {
   sliderElement.noUiSlider.updateOptions({
     range: {
@@ -85,7 +78,7 @@ const updateSlider = () => {
     step: chosenEffect.step,
     start: chosenEffect.max,
   });
-  //если выбран дефолтный, слайдлер нужно скрыть
+
   if (isDefault()) {
     hideSlider();
   } else {
@@ -94,30 +87,27 @@ const updateSlider = () => {
 };
 
 const onSliderUpdate = () => {
-  const sliderValue = sliderElement.noUiSlider.get();//получаем значения слайдера
-  imgPreviewElement.style.filter = isDefault()//проверяем выбран ли дефолт эффект
-    ? DEFAULT_EFFECT.style//если да то записываем дефолтный стиль 'none'
-    : `${chosenEffect.style}(${sliderValue}${chosenEffect.unit})`;//формируем строку из наприм. style: 'invert' + значения из слайдера + единицы измерения.
-  effectLevelElement.value = sliderValue;//и записываем значения слайдера в скрытое поле
+  const sliderValue = sliderElement.noUiSlider.get();
+  imgPreviewElement.style.filter = isDefault()
+    ? DEFAULT_EFFECT.style
+    : `${chosenEffect.style}(${sliderValue}${chosenEffect.unit})`;
+  effectLevelElement.value = sliderValue;
 };
 
-//обработчик кликов по фильтрам с эффектами
 const onEffectsChange = (evt) => {
   if (!evt.target.classList.contains('effects__radio')) {
     return;
   }
-  chosenEffect = EFFECTS.find((effect) => effect.name === evt.target.value);//сопоставляем value эффекта с выбранным
-  imgPreviewElement.className = `effects__preview--${chosenEffect.name}`;//меняем класс фотографии
+  chosenEffect = EFFECTS.find((effect) => effect.name === evt.target.value);
+  imgPreviewElement.className = `effects__preview--${chosenEffect.name}`;
   updateSlider();
 };
 
-//сброс эффектов поумолч
 const resetEffects = () => {
   chosenEffect = DEFAULT_EFFECT;
   updateSlider();
 };
 
-//создаем слайдер
 noUiSlider.create(sliderElement, {
   range: {
     min: DEFAULT_EFFECT.min,
@@ -130,6 +120,6 @@ noUiSlider.create(sliderElement, {
 hideSlider();
 
 effectsElement.addEventListener('change', onEffectsChange);
-sliderElement.noUiSlider.on('update', onSliderUpdate);//через метод on обращаемся к NoUISlider
+sliderElement.noUiSlider.on('update', onSliderUpdate);
 
 export {resetEffects};

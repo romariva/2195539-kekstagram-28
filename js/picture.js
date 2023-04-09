@@ -1,13 +1,9 @@
-//находим шаблон и его содержимое
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 
-//находим место для вставки фотографий
 const pictureContainer = document.querySelector('.pictures');
 
-//создаем фрагмент для вставки
 const pictureFragment = document.createDocumentFragment();
 
-//функция для отрисовки мелких изображений
 const renderPictureList = ({id, url, likes, comments, description}) => {
   const pictureElement = pictureTemplate.cloneNode(true);
   pictureElement.querySelector('.picture__img').src = url;
