@@ -19,6 +19,8 @@ getData()
     }
   );
 
+//отправка формы
 formSubmit();
 
+//загрузка своей картинки
 loadLocalFile();
