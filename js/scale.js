@@ -8,12 +8,10 @@ const scaleButtonSmaller = document.querySelector('.scale__control--smaller');
 const scaleButtonBigger = document.querySelector('.scale__control--bigger');
 const imgPreviewElement = document.querySelector('.img-upload__preview img');
 
-
 const scaleImage = (value) => {
   imgPreviewElement.style.transform = `scale(${value / 100})`;
   valueScaleElement.value = `${value}%`;
 };
-
 
 const onSmallerButtonClick = () => {
   const currentValue = parseInt(valueScaleElement.value, 10);

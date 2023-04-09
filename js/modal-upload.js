@@ -41,5 +41,4 @@ function closeMessage () {
   document.removeEventListener('keydown', onMessageCloseEvent);
 }
 
-
 export {getModalSuccess, getModalError};
