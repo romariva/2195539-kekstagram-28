@@ -8,13 +8,11 @@ const scaleButtonSmaller = document.querySelector('.scale__control--smaller');
 const scaleButtonBigger = document.querySelector('.scale__control--bigger');
 const imgPreviewElement = document.querySelector('.img-upload__preview img');
 
-//делает число меньше 1 для получения нужного процента
 const scaleImage = (value) => {
   imgPreviewElement.style.transform = `scale(${value / 100})`;
   valueScaleElement.value = `${value}%`;
 };
 
-//кнопка для уменьшения изображения
 const onSmallerButtonClick = () => {
   const currentValue = parseInt(valueScaleElement.value, 10);
   let newValue = currentValue - SCALE_STEP;
@@ -24,7 +22,6 @@ const onSmallerButtonClick = () => {
   scaleImage(newValue);
 };
 
-//кнопка для увеличения изображения
 const onBiggerButtonClick = () => {
   const currentValue = parseInt(valueScaleElement.value, 10);
   let newValue = currentValue + SCALE_STEP;
@@ -34,7 +31,6 @@ const onBiggerButtonClick = () => {
   scaleImage(newValue);
 };
 
-//сброс масштаба поумолчанию
 const resetScale = () => scaleImage(DEFAULT_SCALE);
 
 scaleButtonSmaller.addEventListener('click', onSmallerButtonClick);
