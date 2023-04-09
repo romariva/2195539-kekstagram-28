@@ -55,4 +55,13 @@ const debounce = (callback, timeoutDelay = 500) => {
   };
 };
 
-export {getRandomArrayElement, getRandomInteger, isEscapeKey, getUniqueId, createElement, showAlert, debounce};
+const getCommentsCounter = () => {
+  let counter = 1;
+
+  return (showComments, commentsLength) => {
+    const currentNumber = counter++;
+    return showComments * currentNumber < commentsLength ? showComments * currentNumber : commentsLength;
+  };
+};
+
+export {getRandomArrayElement, getRandomInteger, isEscapeKey, getUniqueId, createElement, showAlert, debounce, getCommentsCounter};

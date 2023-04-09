@@ -1,4 +1,4 @@
-import {isEscapeKey} from './util.js';
+import {isEscapeKey, getCommentsCounter} from './util.js';
 import {renderComments} from './comments.js';
 
 const MAX_COMMENTS_NUMBER = 5;
@@ -26,17 +26,16 @@ const renderFullsize = (data) => {
       pictureLikeCount.textContent = currentItem.likes;
       pictureDesc.textContent = currentItem.description;
 
-      renderComments(currentItem.comments.slice(0, MAX_COMMENTS_NUMBER));
-
-      const fromCommentsQty =
-       currentItem.comments.length > 5 ? 5 : currentItem.comments.length;
-      const CommentsQty = currentItem.comments.length;
-
-      commentsCount.innerHTML = `${fromCommentsQty} из <span class='comments-count'>${CommentsQty}</span> комментариев`;
+      const commentsCounter = getCommentsCounter();
+      const commentsQty = currentItem.comments.length;
+      const fromCommentsQt = commentsCounter(MAX_COMMENTS_NUMBER, commentsQty);
+      renderComments(currentItem.comments.slice(0, fromCommentsQt));
+      commentsCount.innerHTML = `${fromCommentsQt} из <span class='comments-count'>${commentsQty}</span> комментариев`;
 
       commentLoader.addEventListener('click', () => {
-        renderComments(currentItem.comments);
-        commentsCount.innerHTML = `${fromCommentsQty} из ${CommentsQty} комментариев`;
+        const fromCommentsQty = commentsCounter(MAX_COMMENTS_NUMBER, commentsQty);
+        renderComments(currentItem.comments.slice(0, fromCommentsQty));
+        commentsCount.innerHTML = `${fromCommentsQty} из ${commentsQty} комментариев`;
       });
 
       evt.preventDefault();
