@@ -63,6 +63,9 @@ const openModalWindow = () => {
   modalShow.classList.remove('hidden');
   body.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentEscapeKeydown);
+  if (getModalError) {
+    document.removeEventListener('keydown', onDocumentEscapeKeydown);
+  }
 };
 
 const closeModalWindow = () => {

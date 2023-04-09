@@ -52,7 +52,6 @@ const EFFECTS = [
 
 const DEFAULT_EFFECT = EFFECTS[0];
 
-
 let chosenEffect = DEFAULT_EFFECT;
 
 const imgPreviewElement = document.querySelector('.img-upload__preview img');
@@ -61,19 +60,15 @@ const sliderElement = document.querySelector('.effect-level__slider');
 const sliderContainerElement = document.querySelector('.img-upload__effect-level');
 const effectLevelElement = document.querySelector('.effect-level__value');
 
-
 const isDefault = () => chosenEffect === DEFAULT_EFFECT;
-
 
 const showSlider = () => {
   sliderContainerElement.classList.remove('hidden');
 };
 
-
 const hideSlider = () => {
   sliderContainerElement.classList.add('hidden');
 };
-
 
 const updateSlider = () => {
   sliderElement.noUiSlider.updateOptions({
