@@ -43,7 +43,6 @@ const EFFECTS = {
   },
 };
 
-
 const DEFAULT_EFFECT = EFFECTS.none;
 
 let chosenEffect = DEFAULT_EFFECT;
@@ -89,7 +88,6 @@ const onSliderUpdate = () => {
   effectLevelElement.value = sliderValue;
 };
 
-
 const onEffectsChange = (evt) => {
   if (!evt.target.classList.contains('effects__radio')) {
     return;
@@ -99,12 +97,10 @@ const onEffectsChange = (evt) => {
   updateSlider();
 };
 
-
 const resetEffects = () => {
   chosenEffect = DEFAULT_EFFECT;
   updateSlider();
 };
-
 
 noUiSlider.create(sliderElement, {
   range: {
